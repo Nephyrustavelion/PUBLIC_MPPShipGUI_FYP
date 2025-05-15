@@ -1,0 +1,19 @@
+Typical User Method:
+Open folder 'Program 2013 guidelines'
+Right click on 'WindowsFormsApp1FYP_WindowsForm.exe - Shortcut'
+Click on "Run as Administrator"
+(Note: your computer/antivirus software will attempt to block the file
+because the publisher is Unknown and software is not 'fully licensed'.)
+Window will prompt "Do you want to allow this app from unknown publisher...?"
+Click on 'Yes'
+Program should run normally.
+
+Developer Method:
+Ensure that Microsoft Visual Studio is downloaded
+Ensure all C# related packages are downloaded.
+Open folder 'FYP_draftv10'
+Open file 'FYP_CalculationDraftV10.sln'
+Ensure class 'FYP_WindowsForm' is 'Set as Startup Project'.
+Ensure it's in 'Debug' mode before hitting the 'Start' button.
+ 
+Nelton,AY20/21

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MPP_Test" msprop:Generator_TableClassName="MPP_TestDataTable" msprop:Generator_TableVarName="tableMPP_Test" msprop:Generator_TablePropName="MPP_Test" msprop:Generator_RowDeletingName="MPP_TestRowDeleting" msprop:Generator_RowChangingName="MPP_TestRowChanging" msprop:Generator_RowEvHandlerName="MPP_TestRowChangeEventHandler" msprop:Generator_RowDeletedName="MPP_TestRowDeleted" msprop:Generator_UserTableName="MPP_Test" msprop:Generator_RowChangedName="MPP_TestRowChanged" msprop:Generator_RowEvArgName="MPP_TestRowChangeEvent" msprop:Generator_RowClassName="MPP_TestRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MCR" msprop:Generator_ColumnVarNameInTable="columnMCR" msprop:Generator_ColumnPropNameInRow="MCR" msprop:Generator_ColumnPropNameInTable="MCRColumn" msprop:Generator_UserColumnName="MCR" type="xs:string" />
+              <xs:element name="MPP_Cal" msprop:Generator_ColumnVarNameInTable="columnMPP_Cal" msprop:Generator_ColumnPropNameInRow="MPP_Cal" msprop:Generator_ColumnPropNameInTable="MPP_CalColumn" msprop:Generator_UserColumnName="MPP_Cal" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="MPP_TestKey1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:MPP_Test" />
+      <xs:field xpath="mstns:MCR" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

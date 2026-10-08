@@ -1,0 +1,16 @@
+.hull-illustration {
+  margin-top: 18px;
+  padding: 8px 20px 12px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  text-align: center;
+}
+.hull-illustration svg {
+  width: 100%;
+  max-height: 110px;
+}
+.hull-illustration span {
+  font-size: 12px;
+  color: #555;
+}

@@ -1,0 +1,20 @@
+.propeller-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fff9df;
+  border: 1px solid #caba86;
+  border-radius: 5px;
+  margin-top: 16px;
+  color: #685a23;
+}
+.propeller-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.propeller-note p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}

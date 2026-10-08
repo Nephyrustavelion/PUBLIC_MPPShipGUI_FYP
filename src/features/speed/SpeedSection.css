@@ -1,0 +1,9 @@
+.speed-note {
+  margin: 16px 0 0;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #eee;
+  font-size: 13px;
+  color: var(--muted);
+}

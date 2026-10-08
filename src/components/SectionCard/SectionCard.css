@@ -1,0 +1,64 @@
+.section-card {
+  overflow: hidden;
+}
+.section-card-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.section-number {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  background: #e6e6e6;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: #444;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section-card-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+.section-card-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.section-heading {
+  min-width: 0;
+}
+.section-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.section-card-body {
+  padding: 20px;
+}
+@media (max-width: 700px) {
+  .section-card-header {
+    padding: 19px;
+    flex-wrap: wrap;
+  }
+  .section-actions {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 49px;
+    flex-wrap: wrap;
+  }
+  .section-heading {
+    flex: 1;
+  }
+  .section-card-body {
+    padding: 19px;
+  }
+}

@@ -1,0 +1,93 @@
+.field {
+  min-width: 0;
+}
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.field-label-row label {
+  color: #0078d7;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+.comment-toggle {
+  padding: 5px;
+  border: 0;
+  border-radius: 999px;
+  color: #c04000;
+  background: transparent;
+  cursor: pointer;
+}
+.comment-toggle:hover,
+.comment-toggle.has-comment {
+  color: var(--accent);
+  background: #fff0e5;
+}
+.field-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 37px;
+  border: 1px solid #b5b5b5;
+  border-radius: 4px;
+  background: #ffffe0;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.field-control:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px #297a841a;
+}
+.field-control input,
+.field-control select {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.field-control input::placeholder {
+  color: #767676;
+}
+.field-control select {
+  cursor: pointer;
+}
+.field-unit {
+  padding: 0 13px 0 6px;
+  color: #333;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.field-symbol {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: #555;
+}
+.field-hint {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.field-comment {
+  width: 100%;
+  margin-top: 9px;
+  border: 1px solid var(--line);
+  background: #fff9;
+  padding: 9px;
+  border-radius: 9px;
+  font-size: 12px;
+  resize: vertical;
+  color: var(--ink);
+}

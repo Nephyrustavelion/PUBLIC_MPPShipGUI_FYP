@@ -1,0 +1,60 @@
+.assessment-header {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background: #fff;
+}
+.assessment-header h1 {
+  margin: 0;
+  color: #0078d7;
+  font-family: Calibri, "Segoe UI", Arial, sans-serif;
+  font-size: clamp(23px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.methodology {
+  max-width: 850px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.45;
+  margin: 8px 0 18px;
+}
+.assessment-vessel {
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.toolbar-actions .button {
+  min-width: 108px;
+}
+.toolbar-actions .button-run-all,
+.toolbar-actions .button-sample,
+.toolbar-actions .button-export {
+  font-family: "Arial Narrow", Arial, sans-serif;
+}
+.toolbar-actions .export-button {
+  margin-left: auto;
+}
+@media (max-width: 600px) {
+  .assessment-header {
+    padding: 16px;
+  }
+  .toolbar-actions {
+    gap: 8px;
+  }
+  .toolbar-actions .button {
+    min-width: 0;
+    flex: 1 1 calc(50% - 8px);
+    padding: 8px 12px;
+  }
+  .toolbar-actions .export-button {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}

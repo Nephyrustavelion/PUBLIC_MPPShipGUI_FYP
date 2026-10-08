@@ -1,10 +1,92 @@
-# Propulsion Studio
+## Live Website: 
 
-A browser-based migration of the supplied C# minimum propulsion power application, built with React, TypeScript, Vite and Tailwind CSS. All seven calculation sections appear on one scrolling page in the original order. The interface follows the desktop application's grey background, blue labels, pale input colours, Calibri/Arial Narrow font families, and coloured controls, with rounder buttons and responsive layouts. There is no sidebar, page switching or calculation pagination.
+[Open the Ship Assessment website](https://mppshipgui.netlify.app/)
 
-## Start locally
+# Minimum Propulsion Power Assessment
 
-Use Node.js 22.12 or newer. From this folder:
+A ship-engineering Final Year Project originally developed in C# during 2020–2021 and refactored into a React and TypeScript website in 2026.
+
+The project began with an Excel calculation workflow. Its purpose was to bring ship parameters, propulsion calculations, tables, and charts into one application, reducing repetitive spreadsheet work and making it easier to generate a PDF calculation report.
+
+The current website uses **React, TypeScript, Vite, and Tailwind CSS**. It keeps the original calculation logic and familiar controls while making the application accessible through a browser.
+
+## Purpose and intended audience
+
+This application is intended for people who record, measure, or assess ship parameters, including engineering students, researchers, and personnel working with vessel dimensions, engine particulars, resistance, and propeller data.
+
+The workflow starts with entered measurements and vessel information. It then calculates the assessment results, generates tables and charts, and assembles a report that can be exported as PDF. It supports the assessment of recorded parameters; it does not collect measurements directly from instruments.
+
+The aim of replacing the Excel workflow was to:
+
+- Keep vessel inputs and related calculations together.
+- Reduce repeated formula entry and manual spreadsheet preparation.
+- Generate calculation charts and diagrams from the entered parameters more quickly.
+- Make it easier to compare results and review the relationships between inputs and outputs.
+- Produce a consistent report containing calculations, charts, and supporting comments.
+
+## The original Final Year Project: 2020–2021
+
+The first approximately four months were spent learning about ships and developing the calculations in Excel. This provided the engineering foundation for the application: understanding the parameters, working through the equations, and identifying how the different calculations depended on one another.
+
+The next approximately three to four months focused on turning that workflow into a C# Windows Forms application, alongside two other academic modules. About a month involved intensive self-directed learning through LinkedIn videos, Stack Overflow, and other programming resources, studying most days of the week.
+
+The original implementation was developed without AI coding assistance. Learning the language and delivering the application happened together. The challenges included:
+
+- Translating spreadsheet formulas into C# methods while keeping track of units and calculation order.
+- Learning Windows Forms controls, button events, input handling, and application state.
+- Connecting user-entered ship parameters to calculated results, tables, and charts.
+- Adapting examples from different resources into a single application for a specific engineering problem.
+- Integrating PDF generation so the assessment could be documented outside the application.
+- Troubleshooting unfamiliar code and libraries within the available project time.
+
+The resulting application combined vessel particulars, minimum-power assessment, geometry and speed calculations, resistance analysis, propeller charts, sample inputs, comments, and PDF export. Its structure reflects a first substantial programming project developed while learning: much of the workflow lived in the form, with the equations grouped in a separate calculation class.
+
+### Original C# interface
+
+The screenshot below shows the original Windows Forms interface across its assessment pages.
+
+![Original 2021 C# Windows Forms interface showing ship inputs, resistance charts, and propeller analysis](Screenshots%20of%20C%23%20interface.jpg)
+
+## Revisiting the project in 2026
+
+Five years later, while studying AI engineering and learning Java, the project was revisited to bring the existing application to the web. The 2026 refactor used AI coding assistance to migrate the C# calculation methods and application workflow into TypeScript, organize the code, and check the migration against reference results from the original calculation class.
+
+The objective was to preserve the engineering work and functionality while improving accessibility and maintainability:
+
+- **React and TypeScript** provide the browser interface and typed application code.
+- **Vite** supplies the development server and production build.
+- **Tailwind CSS and component-local CSS** handle layout and styling.
+- **Chart.js** renders the calculation charts.
+- **jsPDF and AutoTable** generate the PDF calculation report in the browser.
+- **Netlify** can host the built website without a separate application server.
+
+All seven calculation sections now appear on one scrolling page. The interface keeps the original grey background, blue labels, pale input colours, coloured controls, and Calibri/Arial Narrow font preferences, with rounder buttons and layouts that adapt to smaller screens.
+
+This refactor also separates the calculation engine, interface components, application state, and PDF formatting. The original equations and workflow remain the compatibility baseline; moving to TypeScript does not, by itself, revise the engineering methodology.
+
+### React and TypeScript interface
+
+The screenshot below shows the browser version, including the main controls, vessel particulars, and minimum-power chart.
+
+![2026 React and TypeScript interface showing rounded controls, vessel particulars, and the minimum-power assessment chart](Screenshots%20of%20TS%20interface.png)
+
+## Assessment features
+
+| Section | Purpose |
+| --- | --- |
+| Vessel particulars | Record vessel identity and engine information. |
+| Minimum power line | Compare installed power with the calculated minimum-power line. |
+| Geometry | Calculate corrected submerged lateral area and rudder-area relationships. |
+| Required speed | Calculate navigation and course-keeping speed relationships. |
+| Environment and resistance | Calculate the associated environmental and resistance quantities. |
+| Waves | Build the wave-period, resistance, and thrust table and charts. |
+| Propeller | Generate thrust, torque, efficiency, and ship-curve calculations and charts. |
+
+The application also includes Sample A and Sample B, section-level Run and Clear controls, field comments, adjustable chart limits, a report preview, and PDF export.
+
+## Run locally
+
+Use Node.js 22.12 or newer. From the project root:
 
 ```sh
 corepack enable
@@ -12,111 +94,91 @@ pnpm install
 pnpm dev
 ```
 
-Open the local address displayed in your terminal. The included pnpm lockfile records the tested dependency versions. If you prefer npm, `npm install` and `npm run dev` also work; use one package manager consistently and commit its lockfile.
+Open the local address displayed in the terminal. The included pnpm lockfile records the dependency versions. If using npm instead, run `npm install` and `npm run dev`; use one package manager consistently and retain its lockfile.
 
 ```sh
-pnpm test       # Formula and workflow checks
-pnpm build      # TypeScript checks and production build into dist/
-pnpm preview    # Serve that production build locally
+pnpm test       # Run formula and workflow checks
+pnpm build      # Check TypeScript and build into dist/
+pnpm preview    # Preview the production build locally
 pnpm format     # Format source files
 ```
 
+## Use the application and export PDF
+
+1. Load a sample or enter the vessel particulars and assessment inputs.
+2. Run the relevant sections in their calculation order. If an input changes, rerun the affected sections to update the results.
+3. In the wave section, enter added resistance and select **Add resistance** to fill the next peak period. **Remove last row** reverses the last entry. The table covers 7 to 15.5 seconds in half-second increments.
+4. Run the propeller section to populate its coefficient table and charts. Adjust the chart limits as needed.
+5. Add supporting notes using the field comment controls.
+6. Review **Preview calculation report** at the bottom of the page, then select **Export PDF**.
+
+The PDF contains calculation tables, available charts, comments, selectable text, embedded fonts, and page numbers. The website uses a single calculation page; the report uses normal A4 page breaks for printing.
+
+**Run all** retains the original sequence: vessel particulars, the minimum-power assessment, and propeller analysis. Run the remaining sections individually as needed. Sample A fills the wave table and runs its sample workflow; Sample B updates only its original subset of inputs.
+
+Previously entered wave rows retain their saved resistance values. Remove and re-enter rows when changing that dataset. Inputs and comments remain in browser memory and reset when the page is refreshed.
+
 ## Deploy to Netlify
 
-Push the contents of this folder to your Git repository, then connect that repository to Netlify. `netlify.toml` supplies the settings:
+Connect the repository to Netlify. The included `netlify.toml` defines the build settings:
 
-| Setting           | Value           |
-| ----------------- | --------------- |
-| Build command     | `npm run build` |
-| Publish directory | `dist`          |
-| Node version      | `22`            |
+| Setting | Value |
+| --- | --- |
+| Base directory | Leave blank when this application is at the repository root. |
+| Build command | `npm run build` |
+| Publish directory | `dist` |
+| Node version | `22` |
 
-If this project is placed inside a larger repository, set Netlify's base directory to that project folder. For a manual deployment, upload the contents of `dist`, or extract the supplied deployment ZIP and upload its folder. The assessment is a single page without URL routing, so no URL rewrite is required. No backend, database, API keys or environment variables are needed.
+If the application is moved into a subfolder, use that folder as the base directory. For a manual deployment, build the application and upload the contents of `dist`.
 
-These build settings follow [Netlify's Vite deployment guide](https://docs.netlify.com/build/frameworks/framework-setup-guides/vite/). The app calculates and creates PDFs in the visitor's browser. Inputs remain in memory and reset on page refresh.
+Calculations and PDF generation run in the visitor's browser. No backend, database, API keys, or environment variables are required. The single-page assessment has no URL routing and does not require routing rewrites.
 
-## Use the assessment
-
-1. Load Sample A to reproduce the original sample workflow, or enter vessel details.
-2. Use each section's Run button to update the relevant calculations. Section dependencies follow the desktop workflow.
-3. Enter added wave resistance and select Add resistance to fill the next peak period. Remove last row reverses the last entry. The table covers 7 to 15.5 seconds in half-second increments.
-4. Run the propeller section to populate its coefficient table and charts. Chart axis limits can be changed independently.
-5. Use the comment icons to attach notes to inputs or results.
-6. Select Export PDF in the top control row. Expand Preview calculation report at the bottom of the same page to review the tables first if needed. Export downloads an A4 report with selectable text, embedded fonts, comments, charts, page numbers and repeated table headings. Website calculations have no pagination; the PDF keeps normal A4 page breaks for printing.
-
-The top buttons retain their original order: Run all, Clear all, Sample A, Sample B, with Export PDF on the right on desktop. Each section keeps Run/Save followed by Clear beside its heading. Calibri and Arial Narrow are used when installed, with standard browser font fallbacks on other systems.
-
-Run all preserves the original `Run0`, `Run1`, `Run6` sequence: vessel details, Level 1 and propeller analysis. It does not calculate every Level 2 section. Sample A fills all 18 wave rows and runs the sample calculations; Sample B changes only its original subset of inputs. Changed dependent sections remain marked as out of date until run. Previously entered wave rows retain their saved resistance values; remove/re-enter rows to change that dataset.
-
-## File organization
+## Code organization
 
 ```text
 src/
-  App.tsx                         Single-page application composition
-  App.css                         Tailwind import, theme and shared layout styles
-  main.tsx                        React entry point
-  domain/
-    Parameters.ts                 Port of all 48 C# formula methods
-    assessment.ts                 Original action order, binding and sample workflow
-    fields.ts                     Input definitions, labels, units and defaults
-    numeric.ts                    C# float input and midpoint rounding helpers
-    samples.ts                    Original sample values and resistance polynomial
-    types.ts                      Shared domain types
-    __fixtures__/                 Results captured by executing the original C# class
-    *.test.ts                     Formula and workflow tests
-  hooks/useAssessment.ts          React state and action bindings
-  components/
-    Field/                        Field.tsx + Field.css
-    ResultGrid/                   ResultGrid.tsx + ResultGrid.css
-    SectionCard/                  SectionCard.tsx + SectionCard.css
-    Toolbar/                      Toolbar.tsx + Toolbar.css
-    DataTable/                    DataTable.tsx + DataTable.css
-    Charts/                       AssessmentChart.tsx + AssessmentChart.css
-    ReportPreview/                ReportPreview.tsx + ReportPreview.css
-  features/
-    vessel/ level1/ geometry/ speed/ environment/ waves/ propeller/
-                                  Each section has its own .tsx and .css
-    shared/SectionFields.tsx       Shared section field renderer
-  report/
-    reportModel.ts                Structured report data
-    exportPdf.ts                  PDF formatting and export
-public/fonts/                     Locally hosted report fonts and license
-netlify.toml                      Deployment settings
+  App.tsx                    Application composition
+  App.css                    Tailwind import and shared application styles
+  main.tsx                   React entry point
+  domain/                    Calculation engine, inputs, samples, and types
+    __fixtures__/            Captured original C# calculation results
+    *.test.ts                Formula and workflow tests
+  hooks/                     Assessment state and action bindings
+  components/                Reusable components with adjacent CSS files
+  features/                  The seven assessment sections and their local CSS
+  report/                    Report data model and PDF export
+public/fonts/                Report fonts and their license
+netlify.toml                 Hosting configuration
 ```
 
-`App.tsx` is the TypeScript React equivalent of the requested App.ts: JSX uses the `.tsx` extension. Component-specific CSS stays beside each component. Calculation code is separate from UI and PDF formatting. Tailwind utilities handle reusable grids and spacing; local CSS defines the original desktop palette and component details.
+`App.tsx` holds the global React composition; its `.tsx` extension allows JSX. `App.css` holds shared styles. Each component or feature keeps its specific CSS alongside its TypeScript React files. Calculations are kept separate from interface rendering and PDF formatting.
 
-## Calculation compatibility
+## Calculation compatibility and known limitations
 
-The calculation baseline is the supplied `20250515_FYP_revamp/Parameters.cs`, with action order and inputs taken from the original WinForms `Form1.cs`. The web project contains TypeScript application code and captured JSON reference results; the legacy source remains in your existing Git history. The port keeps the original formulas, constants, state mutations, units inside the engine, and action dependencies. Float literals/input parsing and round-to-even display helpers mirror the original numeric paths. No C# runtime or PowerShell helper is needed to develop, test, build or deploy this project.
+The migration uses the saved C# `Parameters` class and the original Windows Forms action bindings as its reference. The live application requires only the JavaScript toolchain; it does not require a C# runtime. The original project is retained in the historical archive and Git history.
 
-Retained source behavior includes:
+The calculation approach follows the original project's 2013 methodology. Reference-based tests check that the TypeScript port reproduces the supplied C# calculation behavior for the tested cases. These migration tests were added during the refactor and are separate from the original 2021 work. They establish compatibility, rather than independent validation of every engineering equation or possible input.
 
-- Bulk-carrier minimum power returns zero at exactly 20,000 and 145,000 tonnes because the original uses strict inequalities.
+Some original behaviors are intentionally retained and should be considered when reviewing results:
+
+- Bulk-carrier minimum power returns zero at exactly 20,000 and 145,000 tonnes because of the original strict inequalities.
 - The original second speed conversion in the Froude calculation remains.
-- Wake values retain earlier engine state for branches that do not assign a value.
-- Sample B is a partial form update and does not automatically run all calculations.
-- The RPM textbox is not rebound by the original propeller Run action; the sample-seeded engine value remains.
-- Sample A fills the maximum-beam textbox but does not assign the engine's `Bmax`. Its empirical ship curve and operating-point calculations therefore produce `NaN`. The port retains and explains these results rather than changing the equations. Available thrust, torque and efficiency curves still render.
-- The empirical propeller ship curve uses the original seven-second period; manually entered wave-resistance rows are a separate path.
-- Inactive wave-model bindings remain reference values. The entrance-angle helper uses the saved engine state.
+- Some wake-calculation branches retain an earlier value rather than assigning a new one.
+- The propeller Run action does not bind the RPM textbox back to the engine.
+- Sample A sets the maximum-beam input but does not assign the calculation engine's `Bmax`. Its empirical ship curve and operating-point calculations therefore produce `NaN`; available thrust, torque, and efficiency curves still render.
+- The empirical propeller ship curve uses the original seven-second period. Manually entered wave-resistance rows follow a separate calculation path.
+- Inactive wave-model bindings remain reference values, and the entrance-angle helper uses the saved engine state.
 
-Excel import and the engine load-chart handlers were commented out in the supplied source, so no new implementations were invented. The original application's installed designer/runtime was not launched; parity checks target the supplied formula class and the mapped action workflows.
+The original Excel-import and engine-load-chart handlers were commented out in the supplied C# source and are not implemented in the web version. Presentation improvements include clearer input errors, bounded chart generation, a new PDF layout, and labels aligned with the displayed units.
 
-Presentation changes include a new report layout, clearer empty/error states, input validation, bounded chart generation, and matching gravity/knots labels to their values. These do not revise the calculation equations. The methodology remains the source application's 2013 methodology.
+The tests and reference results are under `src/domain/`, including `__fixtures__/csharp-reference.json`.
 
-## Verification
+## Historical files
 
-- 71 automated checks: 57 reference cases generated by invoking the original C# class, a stateful wake test, and 13 workflow/report/rounding checks.
-- All 48 formula methods are covered by the C# reference cases; finite results are compared at relative tolerance `1e-11`, with explicit handling of non-finite and tuple results.
-- Production build and TypeScript checks pass.
-- Isolated browser checks cover all seven sections being present on one page, original button order, samples, comments, charts, PDF download, clear/run actions and mobile overflow at 390 pixels.
-- The exported Sample A report was rendered and visually checked across all nine A4 pages.
-
-The captured reference results are stored in `src/domain/__fixtures__/csharp-reference.json`. The TypeScript tests read these results directly, so testing requires only the JavaScript toolchain.
-
-These checks establish migration compatibility for the tested cases; they do not independently validate the engineering methodology for every possible input.
+- `20210517_FYP_C#.zip` — archived original C# project.
+- `Sample Report.pdf` — example report from the original application.
+- The interface screenshots above document the desktop application and its browser refactor.
 
 ## Font attribution
 
-PDF reports embed Noto Sans Regular and Bold from the Noto project, distributed under the SIL Open Font License. The license is included at `public/fonts/LICENSE.txt`. Font files are served locally, so PDF generation does not require a third-party font service.
+PDF reports embed Noto Sans Regular and Bold, distributed under the SIL Open Font License. The license is included in `public/fonts/LICENSE.txt`. The report fonts are served locally and do not require a third-party font service.
